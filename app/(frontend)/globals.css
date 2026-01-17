@@ -176,6 +176,10 @@
 font-size: clamp(4.0rem,calc(7vw + 1rem) , 9.0rem);
 }
 
+.ProductoftheMonth {
+font-size: clamp(1.0rem,calc(1vw + 1rem) , 6.0rem);
+}
+
 .Kiezkneipe {
 font-size: clamp(3.0rem,calc(5vw + 1rem) , 30vw);
 }

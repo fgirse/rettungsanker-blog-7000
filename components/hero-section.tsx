@@ -26,22 +26,22 @@ export default async function HeroSection() {
             
                </FadeInView>
 
-            <FadeInView delay={0.2} className="mt-[-12vh] text-5xl md:text-6xl lg:text-[18vw] text-amber-50 headingE font-bold leading-tight text-center">
+            <FadeInView delay={0.2} className="mt-[-12vh] text-[40vw] md:text-6xl lg:text-[18vw] text-amber-50 headingE font-bold leading-tight text-center">
                die 
              
             </FadeInView>
-            <FadeInView delay={0.2} className="mt-[-12vh] text-5xl md:text-6xl lg:text-[5vw] text-red-700 headingA font-bold leading-tight text-center">
+            <FadeInView delay={0.2} className="mt-[-8vh] lg:mt-[-12vh] text-[12vw] md:text-6xl lg:text-[5vw] text-red-700 headingA font-bold leading-tight text-center">
                kiezkneipe
                
             </FadeInView>
 
             {/* Product of the Month Section */}
             {productOfTheMonth?.isActive && productOfTheMonth?.image && (
-               <FadeInView delay={0.8} className="mt-12 w-full max-w-4xl">
-                  <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-yellow-500/100 to-yellow-500/70 backdrop-blur-sm border border-amber-500/20 p-8 shadow-2xl">
+               <FadeInView delay={0.8} className="absolute top-[50vh]  lg:top-0 lgleft-12 -rotate-12 max-w-2xl lg:mt-12 lg:w-full lg:max-w-4xl">
+                  <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-lime-300 to-lime-500/70 backdrop-blur-sm border border-amber-500/20 p-8 shadow-2xl">
                      <div className="grid md:grid-cols-2 gap-8 items-center">
                         {/* Image Section */}
-                        <div className="relative h-64 md:h-80 rounded-xl overflow-hidden group">
+                        <div className="relative  h-64 md:h-80 rounded-xl overflow-hidden group">
                            <Image
                               src={typeof productOfTheMonth.image === 'object' ? productOfTheMonth.image.url || '' : ''}
                               alt={productOfTheMonth.title || 'Product of the Month'}
@@ -61,24 +61,24 @@ export default async function HeroSection() {
                         <div className="space-y-4 text-left">
                            <div className="space-y-2">
                               {productOfTheMonth.subtitle && (
-                                 <p className="text-yellow-600 headingA text-3xl font-medium uppercase tracking-wider">
+                                 <p className="text-yellow-600 ProductoftheMonth headingA  font-medium uppercase tracking-wider">
                                     {productOfTheMonth.subtitle}
                                  </p>
                               )}
-                              <h3 className="uppercase text-3xl md:text-4xl font-black text-white">
+                              <h3 className="uppercase text-6xl md:text-7xl lg:text-[10vw] font-black text-white">
                                  {productOfTheMonth.title}
                               </h3>
                            </div>
                            
                            {productOfTheMonth.description && (
-                              <p className="text-amber-500 text-4xl leading-relaxed">
+                              <p className="text-amber-50  text-xl  lg:text-4xl leading-relaxed">
                                  {productOfTheMonth.description}
                               </p>
                            )}
                            
                            {productOfTheMonth.price && (
                               <div className="flex items-baseline gap-2">
-                                 <span className="text-2xl font-bold text-amber-400">
+                                 <span className="text-2xl font-bold text-amber-400 lg:text-6xl">
                                     {productOfTheMonth.price}
                                  </span>
                               </div>
