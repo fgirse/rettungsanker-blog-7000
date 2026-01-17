@@ -1,0 +1,14 @@
+import { GlobalAfterChangeHook } from "payload"
+
+export const afterChangeHook: GlobalAfterChangeHook = async ({ doc, req }) => {
+  // Revalidate pages that use this global
+  try {
+    if (req.context?.revalidate) {
+      await req.context.revalidate("/")
+    }
+  } catch (error) {
+    console.error("Error revalidating:", error)
+  }
+
+  return doc
+}

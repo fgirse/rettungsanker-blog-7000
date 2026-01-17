@@ -1,29 +1,98 @@
-"use client"
-
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "./ui/badge";
 import FadeInView from "./animate-ui/fade-in-view";
+import Image from "next/image";
+import Logo from "../public/Assets/Img/LogoAlt.png";
+import MarqueeCooperateComp from "@/components/MarqueeCooperateComp"
+import { getProductOfTheMonth } from "@/config/globals/product-of-the-month/queries";
 
-export default function HeroSection() {
+export default async function HeroSection() {
+   const productOfTheMonth = await getProductOfTheMonth();
    return (
-      <section className="relative space-y-6 py-8 md:py-12 lg:py-40">
-         <div className="container flex flex-col items-center gap-4 text-center">
-            <FadeInView className="container flex flex-col items-center gap-4 text-center">
-               <Badge className=" px-4 py-1.5 text-sm font-medium">
+      <section className="lg:bg-[url('/Assets/Svg/5555.svg')] bg-contain bg-no-repeat bg-center relative space-y-6 py-8 md:py-16 lg:py-18">
+         <div className="container bg-slate-800/40 flex flex-col items-center gap-4 text-center">
+            <FadeInView className=" container flex flex-col items-center gap-4 text-center">
+               <div className=" mt-[-10vh] mb-4">
+               <Image  src={Logo} alt="Logo Rettungsanker Freiburg" width={600} className=""/>
+               </div>
+    
+    
+               {/*<Badge className=" px-4 py-1.5 text-sm font-medium">
                   <Sparkles className="mr-2 size-8" />
-                  Open Source Authentication Starter
-               </Badge>
+                 Rettungsanker Freiburg
+               </Badge>*/}
+            
+               </FadeInView>
+
+            <FadeInView delay={0.2} className="mt-[-12vh] text-5xl md:text-6xl lg:text-[18vw] text-amber-50 headingE font-bold leading-tight text-center">
+               die 
+             
             </FadeInView>
-            <FadeInView delay={0.2} className="text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl">
-               Next.js 15 Authentication <br />
-               <span className="text-transparent px-2 bg-gradient-to-r from-primary bg-clip-text">Starter Template</span>
+            <FadeInView delay={0.2} className="mt-[-12vh] text-5xl md:text-6xl lg:text-[5vw] text-red-700 headingA font-bold leading-tight text-center">
+               kiezkneipe
+               
             </FadeInView>
-            <FadeInView delay={0.4} className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
+
+            {/* Product of the Month Section */}
+            {productOfTheMonth?.isActive && productOfTheMonth?.image && (
+               <FadeInView delay={0.8} className="mt-12 w-full max-w-4xl">
+                  <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-yellow-500/100 to-yellow-500/70 backdrop-blur-sm border border-amber-500/20 p-8 shadow-2xl">
+                     <div className="grid md:grid-cols-2 gap-8 items-center">
+                        {/* Image Section */}
+                        <div className="relative h-64 md:h-80 rounded-xl overflow-hidden group">
+                           <Image
+                              src={typeof productOfTheMonth.image === 'object' ? productOfTheMonth.image.url || '' : ''}
+                              alt={productOfTheMonth.title || 'Product of the Month'}
+                              fill
+                              className="object-contain transition-transform duration-500 group-hover:scale-150"
+                           />
+                           {productOfTheMonth.badge && (
+                              <div className="absolute top-4 right-4">
+                                 <Badge className="bg-red-600 text-white px-4 py-1.5 text-sm font-bold">
+                                    {productOfTheMonth.badge}
+                                 </Badge>
+                              </div>
+                           )}
+                        </div>
+                        
+                        {/* Content Section */}
+                        <div className="space-y-4 text-left">
+                           <div className="space-y-2">
+                              {productOfTheMonth.subtitle && (
+                                 <p className="text-yellow-600 headingA text-3xl font-medium uppercase tracking-wider">
+                                    {productOfTheMonth.subtitle}
+                                 </p>
+                              )}
+                              <h3 className="uppercase text-3xl md:text-4xl font-black text-white">
+                                 {productOfTheMonth.title}
+                              </h3>
+                           </div>
+                           
+                           {productOfTheMonth.description && (
+                              <p className="text-amber-500 text-4xl leading-relaxed">
+                                 {productOfTheMonth.description}
+                              </p>
+                           )}
+                           
+                           {productOfTheMonth.price && (
+                              <div className="flex items-baseline gap-2">
+                                 <span className="text-2xl font-bold text-amber-400">
+                                    {productOfTheMonth.price}
+                                 </span>
+                              </div>
+                           )}
+                        </div>
+                     </div>
+                  </div>
+               </FadeInView>
+            )}
+
+            {/*<FadeInView delay={0.4} className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
                A complete, open-source authentication starter with login, registration, and protected routes. Available on GitHub.
-            </FadeInView>
-            <FadeInView delay={0.6} className="flex flex-wrap items-center justify-center gap-4">
+            </FadeInView>*/}
+            {/*<FadeInView delay={0.6} className="flex flex-wrap items-center justify-center gap-4">
                <Button asChild size="lg">
                   <Link
                      href="https://github.com/devAaus/better-auth"
@@ -40,7 +109,10 @@ export default function HeroSection() {
                      <span>Try the Demo</span>
                   </Link>
                </Button>
-            </FadeInView>
+            </FadeInView>*/}
+            <div className="mt-6">
+            <MarqueeCooperateComp />
+            </div>
          </div>
       </section>
    );

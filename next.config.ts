@@ -1,14 +1,13 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+import { withPayload } from '@payloadcms/next/withPayload'
+const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
+        protocol: "https" as const,
         hostname: "**.googleusercontent.com",
       }
     ]
   }
 };
 
-export default nextConfig;
+export default withPayload(nextConfig)

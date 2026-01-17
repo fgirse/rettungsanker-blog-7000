@@ -1,0 +1,84 @@
+import { GlobalConfig } from "payload"
+import { afterChangeHook } from "./hooks"
+import { slugField } from "@/config/fields/slug/config"
+
+export const Navigation: GlobalConfig = {
+  slug: "navigation",
+  fields: [
+    {
+      name: "menus",
+      type: "array",
+      required: true,
+      admin: {
+        initCollapsed: true,
+        components: {
+          RowLabel: "@/components/admin/menu-row-label#MenuRowLabel",
+        },
+      },
+      fields: [
+        {
+          name: "menuName",
+          label: "Menu Name",
+          type: "text",
+          required: true,
+        },
+        ...slugField("menuName"),
+        {
+          name: "menuItems",
+          type: "array",
+          admin: {
+            initCollapsed: true,
+            components: {
+              RowLabel:
+                "@/components/admin/menu-item-row-label#MenuItemRowLabel",
+            },
+          },
+          fields: [
+            {
+              name: "URL",
+              type: "text",
+              required: true,
+            },
+            {
+              name: "label",
+              type: "text",
+              required: true,
+            },
+            {
+              name: "subItems",
+              label: "Sub-Menu Items",
+              type: "array",
+              admin: {
+                initCollapsed: true,
+                description: "Add dropdown sub-items for this menu item",
+              },
+              fields: [
+                {
+                  name: "URL",
+                  type: "text",
+                  required: true,
+                },
+                {
+                  name: "label",
+                  type: "text",
+                  required: true,
+                },
+                {
+                  name: "description",
+                  type: "text",
+                  required: false,
+                  admin: {
+                    description: "Optional description for the sub-item",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  hooks: {
+    afterChange: [afterChangeHook],
+  },
+}
