@@ -3,7 +3,7 @@ import Footer from "@/components/footer";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { UserProvider } from "@/context/UserContext";
-import { StarsBackground } from "@/components/animate-ui/backgrounds/stars";
+//import { StarsBackground } from "@/components/animate-ui/backgrounds/stars";
 
 export default async function HomeLayout({
    children,
