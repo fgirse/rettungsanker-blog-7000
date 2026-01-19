@@ -22,7 +22,7 @@ export default buildConfig({
   editor: lexicalEditor(),
 
   admin: {
-    user: 'user',
+    user: 'users',
   },
 
   // Define and configure your collections in this array
