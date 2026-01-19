@@ -23,7 +23,7 @@ export default async function HeroSection() {
             
                </FadeInView>
 
-            <FadeInView delay={0.2} className="mb-4 text-[41vw] md:text-6xl lg:text-[18vw] text-amber-50 headingE font-bold leading-tight text-center">
+            <FadeInView delay={0.2} className="mt-[-8vh] mb-3 text-[41vw] md:text-[30vw] lg:text-[18vw] text-amber-50 headingE font-bold leading-tight text-center">
                die 
              
             </FadeInView>
@@ -34,8 +34,8 @@ export default async function HeroSection() {
 
             {/* Product of the Month Section */}
             {productOfTheMonth?.isActive && productOfTheMonth?.image && (
-               <FadeInView delay={0.8} className="absolute top-[50vh]  lg:top-0 lgleft-12 -rotate-12 max-w-2xl lg:mt-12 lg:w-full lg:max-w-4xl">
-                  <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-lime-300 to-lime-500/70 backdrop-blur-sm border border-amber-500/20 p-8 shadow-2xl">
+               <FadeInView delay={0.8} className="absolute top-[50vh]  lg:top-0 lg:left-12 -rotate-12 max-w-2xl lg:mt-12 lg:w-full lg:max-w-4xl">
+                  <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-violet-600/15 to-lime-500/70 lg:bg-gradient-to-b from-lime-300 to-lime-500/70 backdrop-blur-sm border border-amber-500/20 p-8 shadow-2xl">
                      <div className="grid md:grid-cols-2 gap-8 items-center">
                         {/* Image Section */}
                         <div className="relative  h-64 md:h-80 rounded-xl overflow-hidden group">
@@ -58,7 +58,7 @@ export default async function HeroSection() {
                         <div className="space-y-4 text-left">
                            <div className="space-y-2">
                               {productOfTheMonth.subtitle && (
-                                 <p className="text-yellow-600 ProductoftheMonth headingA  font-medium uppercase tracking-wider">
+                                 <p className="text-yellow-600 ProductoftheMonth headingA font-medium uppercase tracking-wider">
                                     {productOfTheMonth.subtitle}
                                  </p>
                               )}
@@ -107,7 +107,7 @@ export default async function HeroSection() {
                   </Link>
                </Button>
             </FadeInView>*/}
-            <div className="mt-2">
+            <div className="md:mt-[24vh] lg:mt-[-12vh]">
             <MarqueeCooperateComp />
             </div>
          </div>
