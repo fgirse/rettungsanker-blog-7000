@@ -8,10 +8,10 @@ import { getProductOfTheMonth } from "@/config/globals/product-of-the-month/quer
 export default async function HeroSection() {
    const productOfTheMonth = await getProductOfTheMonth();
    return (
-      <section className="lg:bg-[url('/Assets/Svg/5555.svg')] bg-contain bg-no-repeat bg-center relative space-y-6 py-8 md:py-16 lg:py-18">
+      <section className="bg-[url('/Assets/Img/lighthouse.webp')] bg-contain bg-no-repeat bg-center lg:bg-[url('/Assets/Svg/5555.svg')] lg:bg-contain lg:bg-no-repeat lg:bg-center relative space-y-6 py-8 md:py-16 lg:py-18">
          <div className="container bg-slate-800/40 flex flex-col items-center gap-4 text-center">
             <FadeInView className=" container flex flex-col items-center gap-4 text-center">
-               <div className=" mt-[-10vh] mb-4">
+               <div className="lg:mt-[-10vh] mb-4">
                <Image  src={Logo} alt="Logo Rettungsanker Freiburg" width={600} className=""/>
                </div>
     
@@ -23,11 +23,11 @@ export default async function HeroSection() {
             
                </FadeInView>
 
-            <FadeInView delay={0.2} className="mt-[-12vh] text-[40vw] md:text-6xl lg:text-[18vw] text-amber-50 headingE font-bold leading-tight text-center">
+            <FadeInView delay={0.2} className="mb-4 text-[41vw] md:text-6xl lg:text-[18vw] text-amber-50 headingE font-bold leading-tight text-center">
                die 
              
             </FadeInView>
-            <FadeInView delay={0.2} className="mt-[-8vh] lg:mt-[-12vh] text-[12vw] md:text-6xl lg:text-[5vw] text-red-700 headingA font-bold leading-tight text-center">
+            <FadeInView delay={0.2} className="mt-[-8vh] lg:mt-[-12vh] text-[11vw] md:text-6xl lg:text-[5vw] text-red-700 headingA font-bold leading-tight text-center">
                kiezkneipe
                
             </FadeInView>
@@ -107,7 +107,7 @@ export default async function HeroSection() {
                   </Link>
                </Button>
             </FadeInView>*/}
-            <div className="mt-6">
+            <div className="mt-2">
             <MarqueeCooperateComp />
             </div>
          </div>
