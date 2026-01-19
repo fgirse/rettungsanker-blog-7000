@@ -1,7 +1,5 @@
 import { Code, Database, Layers, Lock, Zap } from 'lucide-react'
 import React from 'react'
-import FadeInView from './animate-ui/fade-in-view';
-import { Card } from './ui/card';
 
 
 const stack = [
