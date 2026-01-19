@@ -9,7 +9,7 @@ function MarqueeCooperateComp() {
     // Use fade props
     return (
         <Marquee fade={true}>
-            <section className ="mt-[60vh] flex items-center justify-center">
+            <section className ="mt-[64vh] flex items-center justify-center">
             <div className="mr-36 py-32 ">
                 <Image src={LogoNeu} alt="LogoNeu" width={150} height={80} />
             </div>

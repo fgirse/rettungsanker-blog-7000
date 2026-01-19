@@ -3,15 +3,15 @@ import FadeInView from "./animate-ui/fade-in-view";
 import Image from "next/image";
 import Logo from "../public/Assets/Img/LogoAlt.png";
 import MarqueeCooperateComp from "@/components/MarqueeCooperateComp"
-import { getProductOfTheMonth } from "@/config/globals/product-of-the-month/queries";
+import { getProductOfTheMonth }from "@/config/globals/product-of-the-month/queries";
 
 export default async function HeroSection() {
    const productOfTheMonth = await getProductOfTheMonth();
    return (
-      <section className="bg-[url('/Assets/Img/lighthouse.webp')] bg-contain bg-no-repeat bg-center lg:bg-[url('/Assets/Svg/5555.svg')] lg:bg-contain lg:bg-no-repeat lg:bg-center relative space-y-6 py-8 md:py-16 lg:py-18">
+      <section className="relative space-y-6 py-8 md:py-16 lg:py-18">
          <div className="container bg-slate-800/40 flex flex-col items-center gap-4 text-center">
             <FadeInView className=" container flex flex-col items-center gap-4 text-center">
-               <div className="lg:mt-[-10vh] mb-4">
+               <div className="-mt-12 lg:mt-[-10vh] mb-4">
                <Image  src={Logo} alt="Logo Rettungsanker Freiburg" width={600} className=""/>
                </div>
     
@@ -34,7 +34,7 @@ export default async function HeroSection() {
 
             {/* Product of the Month Section */}
             {productOfTheMonth?.isActive && productOfTheMonth?.image && (
-               <FadeInView delay={0.8} className="absolute top-[50vh]  lg:top-0 lg:left-12 -rotate-12 max-w-2xl lg:mt-12 lg:w-full lg:max-w-4xl">
+               <FadeInView delay={0.8} className="absolute top-[50vh]  lg:top-24 lg:left-12 -rotate-12 max-w-2xl lg:mt-12 lg:w-full lg:max-w-4xl">
                   <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-lime-300/10 to-lime-500/70 lg:from-lime-300 lg:to-lime-500/70 lg:bg-gradient-to-b backdrop-blur-sm border border-amber-500/20 p-8 shadow-2xl">
                      <div className="grid md:grid-cols-2 gap-8 items-center">
                         {/* Image Section */}
@@ -62,13 +62,13 @@ export default async function HeroSection() {
                                     {productOfTheMonth.subtitle}
                                  </p>
                               )}
-                              <h3 className="uppercase text-6xl md:text-7xl lg:text-[10vw] font-black text-white">
+                              <h3 className="font-sans uppercase text-6xl md:text-7xl lg:text-[10vw] font-black text-white">
                                  {productOfTheMonth.title}
                               </h3>
                            </div>
                            
                            {productOfTheMonth.description && (
-                              <p className="text-amber-50  text-xl  lg:text-4xl leading-relaxed">
+                              <p className="font-sans text-amber-50  text-xl  lg:text-4xl leading-relaxed">
                                  {productOfTheMonth.description}
                               </p>
                            )}
@@ -107,7 +107,7 @@ export default async function HeroSection() {
                   </Link>
                </Button>
             </FadeInView>*/}
-            <div className="md:mt-[24vh] lg:mt-[-12vh]">
+            <div className="">
             <MarqueeCooperateComp />
             </div>
          </div>
