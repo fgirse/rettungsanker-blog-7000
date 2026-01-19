@@ -3,19 +3,28 @@ import { Noto_Sans_KR } from 'next/font/google';
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "@/components/ui/sonner";
+import { Bowlby_One, Architects_Daughter } from "next/font/google";
 
-const notoSansKR = Noto_Sans_KR({
-  weight: ['300', '400', '500', '700'],
-  subsets: ['latin'],
-  variable: '--font-noto-sans-kr',
-  display: 'swap',
+const bowlbyOne = Bowlby_One({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-bowlby",
 });
 
+const architectsDaughter = Architects_Daughter({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-architects",
+});
+
+
+
+
 export const metadata: Metadata = {
-  title: "Better Auth Starter",
+  title: "Rettungsanker-Freiburg",
   description: "Next.js + Better Auth + Shadcn UI + Tailwind CSS",
   icons: {
-    icon: '/logo.png'
+    icon: '/LogoNeu.png'
   }
 };
 
@@ -25,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${notoSansKR.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${bowlbyOne.variable} ${architectsDaughter.variable}`} suppressHydrationWarning>
       <body
         className={` antialiased`}
       >

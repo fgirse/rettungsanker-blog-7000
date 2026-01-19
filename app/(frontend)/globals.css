@@ -172,6 +172,50 @@
   }
 }
 
+
+body {
+  font-family: architects-daughter, sans-serif;
+}
+
+/* architects-daughter-regular - latin */
+@font-face {
+  font-family: "Architects Daughter";
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local(""),
+    url("../../public/fonts/ArchitectsDaughter/architects-daughter-v17-latin-regular.eot")
+      format("embedded-opentype"),
+    url("../../public/fonts/ArchitectsDaughter/architects-daughter-v17-latin-regular.woff2")
+      format("woff2"),
+    url("../../public/fonts/ArchitectsDaughter/architects-daughter-v17-latin-regular.woff")
+      format("woff"),
+    url("../../public/fonts/ArchitectsDaughter/architects-daughter-v17-latin-regular.ttf")
+      format("truetype"),
+    url("../../public/fonts/ArchitectsDaughter/architects-daughter-v17-latin-regular.svg")
+      format("svg");
+}
+
+/* BowlbyOneSC/-sc-regular - latin */
+@font-face {
+  font-family: "Bowlby One SC";
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local(""),
+    url("../../public/fonts/BowlbyOneSC/bowlby-one-sc-v19-latin-regular.eot")
+      format("embedded-opentype"),
+    url("../../public/fonts/BowlbyOneSC/bowlby-one-sc-v19-latin-regular.woff2")
+      format("woff2"),
+    url("../../public/fonts/BowlbyOneSC/bowlby-one-sc-v19-latin-regular.woff")
+      format("woff"),
+    url("../../public/fonts/BowlbyOneSC/bowlby-one-sc-v19-latin-regular.ttf")
+      format("truetype"),
+    url("../../public/fonts/BowlbyOneSC/bowlby-one-sc-v19-latin-regular.svg")
+      format("svg");
+}
+
+
 .Galerie {
 font-size: clamp(4.0rem,calc(7vw + 1rem) , 9.0rem);
 }
