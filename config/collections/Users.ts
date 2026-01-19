@@ -3,7 +3,7 @@ import type { CollectionConfig } from 'payload'
 import { authenticated } from '../../access/authenticated'
 
 export const Users: CollectionConfig = {
-  slug: 'user',
+  slug: 'users',
   auth: {
     tokenExpiration: 7200, // 2 hours
   },
@@ -33,6 +33,7 @@ export const Users: CollectionConfig = {
       ],
       defaultValue: 'user',
       required: true,
+      hasMany: false,
     },
     {
       name: 'emailVerified',

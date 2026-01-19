@@ -1,4 +1,5 @@
 import { auth } from './auth'
+import type { Payload } from 'payload'
 
 /**
  * Better Auth strategy for Payload CMS
@@ -6,7 +7,7 @@ import { auth } from './auth'
  */
 export const betterAuthStrategy = {
   name: 'better-auth',
-  authenticate: async ({ payload, headers }: any) => {
+  authenticate: async ({ payload, headers }: { payload: Payload; headers: Headers }) => {
     try {
       // Get session from Better Auth using the cookies/headers
       const session = await auth.api.getSession({
@@ -19,7 +20,7 @@ export const betterAuthStrategy = {
 
       // Find user in Payload collection
       const users = await payload.find({
-        collection: 'user',
+        collection: 'users',
         where: {
           email: {
             equals: session.user.email
@@ -31,7 +32,7 @@ export const betterAuthStrategy = {
       if (users.docs.length === 0) {
         // User exists in Better Auth but not in Payload, create it
         const newUser = await payload.create({
-          collection: 'user',
+          collection: 'users',
           data: {
             email: session.user.email,
             name: session.user.name || '',

@@ -1,4 +1,4 @@
-import { revalidateTag } from "next/cache"
+import { revalidateTag } from "next/cache.js"
 import { GlobalAfterChangeHook } from "payload"
 import { CACHE_TAG } from "./queries"
 

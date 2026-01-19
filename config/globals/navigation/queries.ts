@@ -1,7 +1,7 @@
-import { unstable_cache } from "next/cache"
+import { unstable_cache } from "next/cache.js"
 import { getPayload } from "payload"
-import configPromise from "@payload-config"
-import { Config, Navigation } from "@/payload-types"
+import configPromise from "../../../payload.config"
+import { Config, Navigation } from "../../../payload-types"
 type Global = keyof Config["globals"]
 
 const slug: Global = "navigation"

@@ -4,7 +4,6 @@ import "@devnomic/marquee/dist/index.css";
 import Image from "next/image";
 import LogoFlens from "../public/Assets/Svg/LogoFlens.svg";
 import LogoNeu from "../public/Assets/Img/LogoNeu.png";
-import LogoAstra from "../public/Assets/Svg/Astra_Logo.svg";
 
 function MarqueeCooperateComp() {
     // Use fade props

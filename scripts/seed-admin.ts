@@ -7,7 +7,7 @@ async function seed() {
   try {
     // Check if admin user already exists
     const existingUsers = await payload.find({
-      collection: 'user',
+      collection: 'users',
       where: {
         email: {
           equals: 'admin@example.com'
@@ -20,14 +20,13 @@ async function seed() {
       return
     }
 
-    // Create admin user
+    // Create admin user - Note: password needs to be set via auth API
     const user = await payload.create({
-      collection: 'user',
+      collection: 'users',
       data: {
         email: 'admin@example.com',
-        password: 'admin123', // Change this password after first login!
         name: 'Admin User',
-        role: 'admin',
+        role: ['admin'],
         emailVerified: true,
       }
     })

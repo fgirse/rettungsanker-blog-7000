@@ -21,7 +21,7 @@ export async function getBetterAuthUser(req: Request) {
     const payload = await getPayload({ config })
     
     const users = await payload.find({
-      collection: 'user',
+      collection: 'users',
       where: {
         email: {
           equals: session.user.email
