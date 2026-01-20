@@ -31,7 +31,7 @@ export default function AboutClient({ aboout }) {
           variants={fadeIn("up", "tween", 0.2, 1)}
           className="mt-2 font-normal sm:text-[32px] text-[20px] text-center text-gray-500"
         >
-          <h1 className="font-sans text-[2.5rem] lg:text-[4rem] font-extrabold text-yellow-500 text-center">
+          <h1 className="font-sans text-[2.5rem] md:text-[10vw] lg:text-[10vw] font-extrabold text-yellow-500 text-center">
             {aboout.title_about}
           </h1>
           <div className="w-36 h-36  md:w-[20vw] lg:w[20vh]  ">
@@ -43,7 +43,7 @@ export default function AboutClient({ aboout }) {
               className="shape-lighthouse h-54 w-60" />
           </div>
 
-          <div className="w-[90vw] -mt-12 text-[1rem] px-5 text-gray-300 md:text-[1rem] lg:text-[3.0rem] font-sans">
+          <div className="w-[90vw] -mt-12 text-[1rem] md:text-[1.66rem] px-5 text-gray-300  lg:text-[3.0rem] font-sans">
             <RichText data={aboout.content_about} />
           </div>
 
@@ -55,7 +55,7 @@ export default function AboutClient({ aboout }) {
               float="left"
               alt="Portrait"
               className=" mt-5 rounded-full portraitMick" />
-            <p className=" font-sans text-gray-300 text-[1.2rem] md:text-[1.33rem] lg:text-[1.66rem]">
+            <p className=" font-sans text-gray-300 text-[1.2rem] md:text-[1.66rem] lg:text-[1.66rem]">
 
               Michael Schreck <br />und<br /> das Team des Rettungsankers
             </p>
@@ -63,12 +63,12 @@ export default function AboutClient({ aboout }) {
         </motion.div>
         <div className="flex flex-col items-center justify-center">
           <button
-            className="lg-justify-between relative mx-auto mb-5 mt-6 flex w-52 flex-row items-center justify-center gap-x-3 rounded-lg border border-transparent bg-yellow-500 px-4 py-2 font-sans text-2xl font-medium  text-gray-200 transition delay-150 duration-300 ease-in-out hover:-translate-y-1  hover:scale-110 hover:bg-indigo-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 md:text-3xl lg:mb-20 lg:flex lg:w-80 lg:flex-row lg:items-center lg:text-2xl xl:mt-2"
+            className="lg-justify-between relative mx-auto mb-5 mt-6 flex w-52 flex-row items-center justify-center gap-x-3 rounded-lg border border-white bg-yellow-500 px-4 py-2 font-sans text-2xl font-medium  text-gray-200 transition delay-150 duration-300 ease-in-out hover:-translate-y-1  hover:scale-110 hover:bg-indigo-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 md:text-3xl lg:mb-20 lg:flex lg:w-80 lg:flex-row lg:items-center lg:text-2xl xl:mt-2"
             type="button"
           >
             <svg
-              className="w-16 lg:w-20 "
-              fill="#ffffff"
+              className="w-20 lg:w-24 "
+              fill="#ffdd50"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
             >
