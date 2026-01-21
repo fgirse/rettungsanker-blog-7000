@@ -9,7 +9,7 @@ export default async function HeroSection() {
    const productOfTheMonth = await getProductOfTheMonth();
    return (
       <section className="relative space-y-6 py-8 md:py-16 lg:py-18">
-         <div className="container bg-slate-800/40 flex flex-col items-center gap-4 text-center">
+         <div className="container flex flex-col items-center gap-4 text-center">
             <FadeInView className=" container flex flex-col items-center gap-4 text-center">
                <div className="-mt-12 lg:mt-[-10vh] mb-4">
                <Image  src={Logo} alt="Logo Rettungsanker Freiburg" width={600} className=""/>

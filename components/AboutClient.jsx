@@ -31,9 +31,9 @@ export default function AboutClient({ aboout }) {
           variants={fadeIn("up", "tween", 0.2, 1)}
           className="mt-2 font-normal sm:text-[32px] text-[20px] text-center text-gray-500"
         >
-          <h1 className="font-sans text-[2.5rem] md:text-[10vw] lg:text-[10vw] font-extrabold text-yellow-500 text-center">
+          <p className="font-sans text-[2.5rem] md:text-[3rem] lg:text-[7.0rem] font-extrabold text-yellow-500 text-center">
             {aboout.title_about}
-          </h1>
+          </p>
           <div className="w-36 h-36  md:w-[20vw] lg:w[20vh]  ">
             <Image
               src={Lighthouse}
@@ -55,7 +55,7 @@ export default function AboutClient({ aboout }) {
               float="left"
               alt="Portrait"
               className=" mt-5 rounded-full portraitMick" />
-            <p className=" font-sans text-gray-300 text-[1.2rem] md:text-[1.66rem] lg:text-[1.66rem]">
+            <p className=" font-sans text-gray-300 text-[1.2rem] md:text-[1.66rem] lg:text-[3.00rem]">
 
               Michael Schreck <br />und<br /> das Team des Rettungsankers
             </p>
