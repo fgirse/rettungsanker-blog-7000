@@ -50,7 +50,7 @@ export default function Team() {
     <div className="bg-slate-900 py-24 sm:py-32">
       <div className="flex flex-col justify-between mx-auto max-w-9xl lg:px-8">
       
-        <div className="flex flex-col items-center justify-center-60 xl:">
+        <div className="flex flex-col items-center justify-center">
           <p className="text-[12vw] md:text-[10vw] headingA tracking-tight lg:text-[7.0rem] text-yellow-500 sm:text-4xl">
             unser team
           </p>
@@ -80,7 +80,7 @@ export default function Team() {
             </li>
           ))}
         </ul>
-        <div/>
+        </div>
       </div>
     </div>
   </div>
