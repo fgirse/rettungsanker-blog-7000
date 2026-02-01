@@ -1,4 +1,4 @@
-import { GlobalConfig } from "payload"
+import type { GlobalConfig } from "payload"
 import { afterChangeHook } from "./hooks"
 
 export const ProductOfTheMonth: GlobalConfig = {

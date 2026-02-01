@@ -1,20 +1,22 @@
-import { mongooseAdapter } from '@payloadcms/db-mongodb';
+import { mongooseAdapter } from '@payloadcms/db-mongodb'
 // storage-adapter-import-placeholder
-import path from 'path';
+import path from 'path'
 import { buildConfig, getPayload as getPayloadBase } from 'payload'
 import { fileURLToPath } from 'url'
-import sharp from 'sharp';
-import { Pages } from "./config/collections/Pages"; 
-import { Users } from './config/collections/Users';
-import { Media } from './config/collections/Media';
-import { Accounts } from './config/collections/Account';
-import { About } from "./config/collections/About";
-import { Sessions } from "./config/collections/Sessions";
-import { VerificationTokens } from "./config/collections/VerificationTokens";
-import { GeneralSettings } from "./config/globals/general-settings/config";
-import { Navigation } from "./config/globals/navigation/config";
-import { ProductOfTheMonth } from "./config/globals/product-of-the-month/config";
+import sharp from 'sharp'
+import { Pages } from './config/collections/Pages'
+import { Users } from './config/collections/Users'
+import { Media } from './config/collections/Media'
+import { Accounts } from './config/collections/Account'
+import { About } from './config/collections/About'
+import { bentogrid } from './config/collections/BentoGrid'
+import { Sessions } from './config/collections/Sessions'
+import { VerificationTokens } from './config/collections/VerificationTokens'
+import { GeneralSettings } from './config/globals/general-settings/config'
+import { Navigation } from './config/globals/navigation/config'
+import { ProductOfTheMonth } from './config/globals/product-of-the-month/config'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { resendAdapter } from '@payloadcms/email-resend'
 
 
 export default buildConfig({
@@ -26,8 +28,16 @@ export default buildConfig({
   },
 
   // Define and configure your collections in this array
-            collections: [Users, Accounts, Sessions, Pages, About, VerificationTokens, Media],
-            globals: [GeneralSettings, Navigation, ProductOfTheMonth],
+  collections: [Users, Accounts, Sessions, Pages, About, bentogrid, VerificationTokens, Media],
+  globals: [GeneralSettings, Navigation, ProductOfTheMonth],
+
+
+
+  email: resendAdapter({
+    defaultFromAddress: 'rettungsanker-freiburg@gmx.de',
+    defaultFromName: 'Rettungsanker Freiburg',
+    apiKey: process.env.RESEND_API_KEY || '',
+  }),
 
   // Your Payload secret - should be a complex and secure string, unguessable
   secret: process.env.PAYLOAD_SECRET || '',

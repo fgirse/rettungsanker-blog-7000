@@ -6,13 +6,13 @@ export default async function About() {
 
   const payload = await getPayload({config});
 
-  const{docs: [aboout],} = await payload.find({
+  const{docs: [about],} = await payload.find({
     collection: "about"
   });
 
-  if (!aboout) {
+  if (!about) {
     return <div>No About Data Found</div>;
   }
 
-  return <AboutClient aboout={aboout} />;
+  return <AboutClient about={about} />;
 }

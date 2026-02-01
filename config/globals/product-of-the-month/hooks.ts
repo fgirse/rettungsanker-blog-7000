@@ -1,4 +1,4 @@
-import { GlobalAfterChangeHook } from "payload"
+import type { GlobalAfterChangeHook } from "payload"
 
 export const afterChangeHook: GlobalAfterChangeHook = async ({ doc, req }) => {
   // Revalidate pages that use this global

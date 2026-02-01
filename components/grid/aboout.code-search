@@ -1,0 +1,8 @@
+# Query: aboout
+
+3 results - 1 file
+
+components/AboutClient.jsx:
+  11: export default function AboutClient({ about }) {
+  35:             {about.title_about}
+  47:             <RichText data={about.content_about} />

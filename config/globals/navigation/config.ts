@@ -1,6 +1,6 @@
-import { GlobalConfig } from "payload"
-import { afterChangeHook } from "./hooks"
-import { slugField } from "@/config/fields/slug/config"
+import type { GlobalConfig } from "payload"
+import { afterChangeHook } from "./hooks.ts"
+import { slugField } from "../../fields/slug/config.ts"
 
 export const Navigation: GlobalConfig = {
   slug: "navigation",

@@ -8,7 +8,7 @@ import { TypingText } from "./CustomTexts";
 import Lighthouse from "@/public/Assets/Img/lighthouse3.png";
 import { RichText } from '@payloadcms/richtext-lexical/react';
 
-export default function AboutClient({ aboout }) {
+export default function AboutClient({ about }) {
   return (
     <section
       id="section-about"
@@ -32,7 +32,7 @@ export default function AboutClient({ aboout }) {
           className="mt-2 font-normal sm:text-[32px] text-[20px] text-center text-gray-500"
         >
           <p className="font-sans text-[2.5rem] md:text-[3rem] lg:text-[7.0rem] font-extrabold text-yellow-500 text-center">
-            {aboout.title_about}
+            {about.title_about}
           </p>
           <div className="w-36 h-36  md:w-[20vw] lg:w[20vh]  ">
             <Image
@@ -44,7 +44,7 @@ export default function AboutClient({ aboout }) {
           </div>
 
           <div className="w-[90vw] -mt-12 text-[1rem] md:text-[1.66rem] px-5 text-gray-300  lg:text-[3.0rem] font-sans">
-            <RichText data={aboout.content_about} />
+            <RichText data={about.content_about} />
           </div>
 
           <div className="flex flex-row justify-center items-center gap-x-5">
