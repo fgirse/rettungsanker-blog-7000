@@ -40,7 +40,7 @@ export default async function HeroSection() {
                         {/* Image Section */}
                         <div className="relative  h-64 md:h-80 rounded-xl overflow-hidden group">
                            <Image
-                              src={typeof productOfTheMonth.image === 'object' ? productOfTheMonth.image.url || '' : ''}
+                              src={typeof productOfTheMonth.image === 'object' ? `/media/${productOfTheMonth.image.filename}` : productOfTheMonth.image}
                               alt={productOfTheMonth.title || 'Product of the Month'}
                               fill
                               className="object-contain transition-transform duration-500 group-hover:scale-150"
