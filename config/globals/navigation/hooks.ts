@@ -1,6 +1,6 @@
-import { revalidateTag } from "next/cache.js"
+import { revalidateTag } from "next/cache"
 import type { GlobalAfterChangeHook } from "payload"
-import { CACHE_TAG } from "./queries.ts"
+import { CACHE_TAG } from "./queries"
 
 export const afterChangeHook: GlobalAfterChangeHook = ({
   doc,

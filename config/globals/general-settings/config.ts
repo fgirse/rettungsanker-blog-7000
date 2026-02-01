@@ -1,5 +1,5 @@
 import type { GlobalConfig } from "payload"
-import { afterChangeHook } from "./hooks.ts"
+import { afterChangeHook } from "./hooks"
 
 export const GeneralSettings: GlobalConfig = {
   slug: "generalSettings",

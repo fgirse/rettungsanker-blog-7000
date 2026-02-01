@@ -1,4 +1,4 @@
-// src/collections/Sessions.ts
+// src/collections/Sessions
 import type { CollectionConfig } from 'payload'
 
 export const Sessions: CollectionConfig = {

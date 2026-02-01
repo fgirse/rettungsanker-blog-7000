@@ -1,6 +1,6 @@
 import { unstable_cache } from "next/cache.js"
 import { getPayload } from "payload"
-import configPromise from "../../../payload.config.ts"
+import configPromise from "../../../payload.config"
 
 const slug = "generalSettings"
 

@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate",
-    "seed:admin": "node --env-file=.env --import=tsx scripts/seed-admin.ts",
+    "seed:admin": "node --env-file=.env --import=tsx scripts/seed-admin",
     "email:dev": "email dev"
   },
   "dependencies": {
