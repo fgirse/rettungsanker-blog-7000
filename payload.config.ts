@@ -1,5 +1,4 @@
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
-// storage-adapter-import-placeholder
 import path from 'path'
 import { buildConfig, getPayload as getPayloadBase } from 'payload'
 import { fileURLToPath } from 'url'
@@ -30,8 +29,6 @@ export default buildConfig({
   // Define and configure your collections in this array
   collections: [Users, Accounts, Sessions, Pages, About, bentogrid, VerificationTokens, Media],
   globals: [GeneralSettings, Navigation, ProductOfTheMonth],
-
-
 
   email: resendAdapter({
     defaultFromAddress: 'rettungsanker-freiburg@gmx.de',

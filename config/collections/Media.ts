@@ -1,10 +1,12 @@
-import path from 'path'
 import type { CollectionConfig } from 'payload'
 
 export const Media: CollectionConfig = {
   slug: 'media',
   access: {
     read: () => true,
+    create: () => true,
+    update: () => true,
+    delete: () => true,
   },
   fields: [
     {
@@ -14,6 +16,28 @@ export const Media: CollectionConfig = {
     },
   ],
   upload: {
-    staticDir: path.resolve(process.cwd(), 'public/media'),
+    staticDir: 'public/media',
+    staticURL: '/media',
+    mimeTypes: ['image/jpeg', 'image/png', 'image/webp', 'image/gif'],
+    imageSizes: [
+      {
+        name: 'thumbnail',
+        width: 400,
+        height: 300,
+        position: 'center',
+      },
+      {
+        name: 'card',
+        width: 667,
+        height: 400,
+        position: 'center',
+      },
+      {
+        name: 'tablet',
+        width: 1024,
+        height: null,
+        position: 'center',
+      },
+    ],
   },
 }
