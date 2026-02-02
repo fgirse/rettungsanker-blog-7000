@@ -55,7 +55,7 @@ export default async function HeroSection() {
                   <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-lime-300/10 to-lime-500/70 lg:from-lime-300 lg:to-lime-500/70 lg:bg-gradient-to-b backdrop-blur-sm border border-amber-500/20 p-8 shadow-2xl">
                      <div className="grid md:grid-cols-2 gap-8 items-center">
                         {/* Image Section */}
-                        <div className="relative  h-64 md:h-80 rounded-xl overflow-hidden group">
+                        <div className="relative  h-80 md:h-80 rounded-xl overflow-hidden group">
                            <Image
                               src={productImage}
                               alt={productOfTheMonth.title || 'Product of the Month'}
