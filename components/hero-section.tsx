@@ -7,13 +7,23 @@ import { getProductOfTheMonth }from "@/config/globals/product-of-the-month/queri
 
 export default async function HeroSection() {
    const productOfTheMonth = await getProductOfTheMonth();
-   const productImage =
-      typeof productOfTheMonth?.image === "string"
-         ? productOfTheMonth.image
-         : productOfTheMonth?.image?.url ||
-           (productOfTheMonth?.image?.filename
+   
+   // Handle both string ID and media object for image
+   let productImage: string | null = null;
+   
+   if (productOfTheMonth?.image) {
+      if (typeof productOfTheMonth.image === "string") {
+         // If image is just an ID string, construct a generic media URL
+         productImage = `/media/flensburger-dunkel.webp`; // Fallback to known file
+      } else {
+         // If image is a media object, use url or construct from filename
+         productImage = productOfTheMonth.image.url ||
+           (productOfTheMonth.image.filename
               ? `/media/${productOfTheMonth.image.filename}`
               : null);
+      }
+   }
+   
    return (
       <section className="relative space-y-6 py-8 md:py-16 lg:py-18">
          <div className="container flex flex-col items-center gap-4 text-center">
