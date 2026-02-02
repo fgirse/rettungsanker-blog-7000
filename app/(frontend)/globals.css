@@ -3,6 +3,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 :root {
   --background: oklch(0.2046 0 0);
   --foreground: oklch(0.9219 0 0);
