@@ -47,7 +47,7 @@ const people = [
 
 export default function Team() {
   return (
-    <div className="bg-slate-900 py-24 sm:py-32">
+    <div className="bg-neutral-900 py-24 sm:py-32">
       <div className="flex flex-col justify-between mx-auto max-w-9xl lg:px-8">
       
         <div className="flex flex-col items-center justify-center">
@@ -56,9 +56,9 @@ export default function Team() {
           </p>
           <div className="mx-36 flex flex-row items-center justify-center gap-3"> 
           <Image src={LogoAlt} alt="Logo"  width={800} height={20} />
-          <Image src={MatroseImSeil} alt="Logo" width={100} height={100} />
+          <Image src={MatroseImSeil} alt="Logo" width={100} height={100} className="mb-24" />
           </div>
-          <p className="w-3/4 mt-36 mx-24 font-sans text-xl text-gray-200">
+          <p className="w-3/4 mt-36 mx-24 text-center font-sans text-xl lg:text-3xl text-neutral-200">
             Wir sind eine dynamische, bunte Crew, welche mit Leidenschaft Gastro lebt und sich schon jetzt auf Deinen Besuch im Rettungsanker freut!
           </p>
         </div>
@@ -70,10 +70,10 @@ export default function Team() {
                 <img
                   alt=""
                   src={person.imageUrl}
-                  className="size-28 rounded-full outline-1 -outline-offset-1 outline-black/5"
+                  className="size-60 rounded-full outline-1 -outline-offset-1 outline-black/5"
                 />
                 <div>
-                  <h1 className="text-base/7 font-sans tracking-tight text-gray-50">{person.name}</h1>
+                  <p className="text-3xl font-sans tracking-tight text-gray-50">{person.name}</p>
                   <p className="text-sm/ font-sans text-yellow-500">{person.role}</p>
                 </div>
               </div>

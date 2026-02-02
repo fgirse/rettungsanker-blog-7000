@@ -17,7 +17,7 @@ const GoogleIcon = (
 
 export default function SignInSection() {
    return (
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex items-center justify-center min-h-screen bg-red-400">
          <div className="flex flex-1 flex-col justify-center px-4 py-10 lg:px-6">
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
                <div className="flex items-center">

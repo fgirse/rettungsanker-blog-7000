@@ -7,6 +7,7 @@ export async function getProductOfTheMonth() {
   try {
     const productOfTheMonth = await payload.findGlobal({
       slug: "productOfTheMonth" as any,
+      depth: 1,
     })
 
     return productOfTheMonth

@@ -7,6 +7,13 @@ import { getProductOfTheMonth }from "@/config/globals/product-of-the-month/queri
 
 export default async function HeroSection() {
    const productOfTheMonth = await getProductOfTheMonth();
+   const productImage =
+      typeof productOfTheMonth?.image === "string"
+         ? productOfTheMonth.image
+         : productOfTheMonth?.image?.url ||
+           (productOfTheMonth?.image?.filename
+              ? `/media/${productOfTheMonth.image.filename}`
+              : null);
    return (
       <section className="relative space-y-6 py-8 md:py-16 lg:py-18">
          <div className="container flex flex-col items-center gap-4 text-center">
@@ -33,14 +40,14 @@ export default async function HeroSection() {
             </FadeInView>
 
             {/* Product of the Month Section */}
-            {productOfTheMonth?.isActive && productOfTheMonth?.image && (
+            {productOfTheMonth?.isActive && productImage && (
                <FadeInView delay={0.8} className="absolute top-[50vh]  lg:top-24 lg:left-12 -rotate-12 max-w-2xl lg:mt-12 lg:w-full lg:max-w-4xl">
                   <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-lime-300/10 to-lime-500/70 lg:from-lime-300 lg:to-lime-500/70 lg:bg-gradient-to-b backdrop-blur-sm border border-amber-500/20 p-8 shadow-2xl">
                      <div className="grid md:grid-cols-2 gap-8 items-center">
                         {/* Image Section */}
                         <div className="relative  h-64 md:h-80 rounded-xl overflow-hidden group">
                            <Image
-                              src={typeof productOfTheMonth.image === 'object' ? `/media/${productOfTheMonth.image.filename}` : productOfTheMonth.image}
+                              src={productImage}
                               alt={productOfTheMonth.title || 'Product of the Month'}
                               fill
                               className="object-contain transition-transform duration-500 group-hover:scale-150"
