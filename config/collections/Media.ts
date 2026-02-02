@@ -17,7 +17,6 @@ export const Media: CollectionConfig = {
   ],
   upload: {
     staticDir: 'public/media',
-    staticURL: '/media',
     mimeTypes: ['image/jpeg', 'image/png', 'image/webp', 'image/gif'],
     imageSizes: [
       {
