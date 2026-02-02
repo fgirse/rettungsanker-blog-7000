@@ -17,13 +17,13 @@ const people = [
     name: 'Simon',
     role: 'Obermaat',
     imageUrl:
-      '/Assets/Img/matrose.png',
+      '/Assets/Svg/ankerIcon.svg',
   },
   {
     name: 'Anne',
     role: 'I. Offizierin',
     imageUrl:
-      '/Assets/Img/Offizier-weiblich.png',
+      '/Assets/Svg/ankerIcon.svg',
   },
   {
     name: 'Lindsay',
@@ -70,7 +70,7 @@ export default function Team() {
                 <img
                   alt=""
                   src={person.imageUrl}
-                  className="size-60 rounded-full outline-1 -outline-offset-1 outline-black/5"
+                  className="size-56 rounded-full outline-1 -outline-offset-1 outline-black/5"
                 />
                 <div>
                   <p className="text-3xl font-sans tracking-tight text-gray-50">{person.name}</p>
