@@ -48,13 +48,12 @@ async function diagnoseAuthIssues() {
         
         // Check password format
         if (credentialAccount.password) {
-          const isBcrypt = credentialAccount.password.startsWith('$2a$') || 
-                          credentialAccount.password.startsWith('$2b$');
+          const isBetterAuthHash = /^[0-9a-f]{32}:[0-9a-f]{128}$/i.test(credentialAccount.password);
           
-          if (isBcrypt) {
-            console.log(`✅ Password: Valid bcrypt hash`);
+          if (isBetterAuthHash) {
+            console.log(`✅ Password: Valid Better Auth hash`);
           } else {
-            console.log(`⚠️  Password: Invalid format (not bcrypt)`);
+            console.log(`⚠️  Password: Invalid format (expected Better Auth hash)`);
             issues.push(`${user.email}: Invalid password format`);
           }
         } else {
@@ -86,7 +85,7 @@ async function diagnoseAuthIssues() {
       issues.forEach((issue, index) => {
         console.log(`${index + 1}. ${issue}`);
       });
-      console.log('\n💡 Run: bun scripts/fix-missing-credential-account.ts <email>');
+      console.log('\n💡 Run: bun scripts/fix-user-credential.ts <email> <new-password>');
     }
 
   } catch (error) {

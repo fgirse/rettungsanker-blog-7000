@@ -40,7 +40,7 @@ async function resetPasswords() {
       } else {
         await prisma.account.create({
           data: {
-            accountId: user.email,
+            accountId: userData.id,
             providerId: "credential",
             userId: userData.id,
             password: hashedPassword,

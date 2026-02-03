@@ -9,7 +9,7 @@
  */
 
 import { PrismaClient } from '@prisma/client';
-import bcrypt from 'bcryptjs';
+import { hashPassword } from 'better-auth/crypto';
 
 const prisma = new PrismaClient();
 
@@ -40,7 +40,7 @@ async function fixCredentialAccount(email: string, password?: string) {
       
       if (password) {
         console.log('Updating password...');
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await hashPassword(password);
         
         await prisma.account.update({
           where: { id: existingAccount.id },
@@ -54,12 +54,12 @@ async function fixCredentialAccount(email: string, password?: string) {
 
     // Generate temporary password if not provided
     const tempPassword = password || `Temp${Math.random().toString(36).slice(2, 10)}!`;
-    const hashedPassword = await bcrypt.hash(tempPassword, 10);
+    const hashedPassword = await hashPassword(tempPassword);
 
     // Create credential account
     await prisma.account.create({
       data: {
-        accountId: email,
+        accountId: user.id,
         providerId: 'credential',
         userId: user.id,
         password: hashedPassword,
