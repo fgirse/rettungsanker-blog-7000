@@ -3,6 +3,7 @@ import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "@/components/ui/sonner";
 import { Bowlby_One, Architects_Daughter } from "next/font/google";
+import ScrollToTop from "@/components/BackToTop/ScrollToTop";
 
 const bowlbyOne = Bowlby_One({
   weight: "400",
@@ -48,6 +49,7 @@ export default function RootLayout({
         <main className="min-h-screen">
           {children}
         </main>
+        <ScrollToTop />
       </body>
     </html>
   );
