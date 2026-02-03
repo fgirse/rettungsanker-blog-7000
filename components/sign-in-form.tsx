@@ -40,6 +40,8 @@ export default function SignInForm() {
       
       try {
          console.log("Attempting to sign in with email:", email);
+         console.log("Auth client baseURL:", process.env.NEXT_PUBLIC_BETTER_AUTH_URL || "http://localhost:3000");
+         
          type SignInResult = {
             error?: string | { message?: string };
             data?: {
@@ -88,7 +90,14 @@ export default function SignInForm() {
       } catch (error) {
          console.error("Sign in exception:", error);
          toast.dismiss(loadingToast);
-         const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred";
+         
+         let errorMessage = "An unexpected error occurred";
+         if (error instanceof TypeError && error.message.includes("fetch")) {
+            errorMessage = "Network error: Unable to reach authentication server. Please check your connection.";
+         } else if (error instanceof Error) {
+            errorMessage = error.message;
+         }
+         
          toast.error(errorMessage);
          setIsLoading(false);
       }
