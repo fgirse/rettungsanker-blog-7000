@@ -5,7 +5,7 @@ import Logo from "@/components/logo"
 import SignInForm from "@/components/sign-in-form"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { JSX, SVGProps } from "react"
+import { JSX, SVGProps, useState } from "react"
 
 const GoogleIcon = (
    props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
@@ -16,6 +16,17 @@ const GoogleIcon = (
 );
 
 export default function SignInSection() {
+   const [isLoading, setIsLoading] = useState(false)
+
+   const handleGoogleSignIn = async () => {
+      setIsLoading(true)
+      try {
+         await signInWithGoogle()
+      } finally {
+         setIsLoading(false)
+      }
+   }
+
    return (
       <div className="flex items-center justify-center min-h-screen bg-red-400">
          <div className="flex flex-1 flex-col justify-center px-4 py-10 lg:px-6">
@@ -36,9 +47,9 @@ export default function SignInSection() {
                   </Link>
                </p>
                <div className="mt-8">
-                  <Button variant="outline" className="w-full" onClick={signInWithGoogle}>
+                  <Button variant="outline" className="w-full" onClick={handleGoogleSignIn} disabled={isLoading}>
                      <GoogleIcon className="size-4" aria-hidden={true} />
-                     Login with Google
+                     {isLoading ? "Signing in..." : "Login with Google"}
                   </Button>
                </div>
 

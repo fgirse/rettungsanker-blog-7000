@@ -17,6 +17,7 @@
     "@payloadcms/db-mongodb": "3.70.0",
     "@payloadcms/email-resend": "3.70.0",
     "@payloadcms/next": "3.70.0",
+    "@payloadcms/plugin-cloud-storage": "3.70.0",
     "@payloadcms/richtext-lexical": "3.70.0",
     "@prisma/client": "^6.5.0",
     "@radix-ui/react-avatar": "^1.1.3",
