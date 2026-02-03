@@ -39,22 +39,21 @@ export default function SignInForm() {
       const loadingToast = toast.loading("Signing in...");
       
       try {
-         await authClient.signIn.email({
+         const result = await authClient.signIn.email({
             email,
             password,
-         }, {
-            onSuccess: () => {
-               toast.dismiss(loadingToast);
-               toast.success("Signed in successfully");
-               router.push("/dashboard");
-               router.refresh();
-            },
-            onError: (ctx) => {
-               toast.dismiss(loadingToast);
-               toast.error(ctx.error.message);
-               setIsLoading(false);
-            },
          });
+         
+         toast.dismiss(loadingToast);
+         
+         if (result.error) {
+            toast.error(result.error.message || "Failed to sign in");
+            setIsLoading(false);
+         } else {
+            toast.success("Signed in successfully");
+            router.push("/dashboard");
+            router.refresh();
+         }
       } catch (error) {
          toast.dismiss(loadingToast);
          toast.error("An unexpected error occurred");
