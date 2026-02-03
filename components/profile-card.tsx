@@ -12,7 +12,7 @@ import { Check, Clock, Mail, MapPin, Shield } from "lucide-react"
 import { useUser } from "@/context/UserContext"
 
 export default function ProfileCard() {
-   const user = useUser();
+   const { user } = useUser();
    return (
       <Card className="overflow-hidden">
          <CardHeader className="relative p-0">
@@ -20,9 +20,9 @@ export default function ProfileCard() {
             <div className="absolute -bottom-12 left-4">
                <div className="relative">
                   <Avatar className="h-24 w-24 border-4 border-background">
-                     <AvatarImage src={user?.image || ''} alt="John Doe" />
+                     <AvatarImage src={user?.image || undefined} alt="John Doe" />
                      <AvatarFallback className="text-6xl font-bold">
-                        {user?.name.charAt(0)}
+                        {user?.name?.charAt(0) ?? "?"}
                      </AvatarFallback>
                   </Avatar>
                </div>
@@ -44,7 +44,7 @@ export default function ProfileCard() {
                </Badge>
                <Badge variant="outline" className="flex items-center gap-1">
                   <Clock className="h-3 w-3" />
-                  Member since {user?.createdAt.getFullYear()}
+                  Member since {user?.createdAt ? new Date(user.createdAt).getFullYear() : "-"}
                </Badge>
             </div>
             <Separator className="my-4" />

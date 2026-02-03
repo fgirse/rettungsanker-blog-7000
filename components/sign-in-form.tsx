@@ -45,22 +45,30 @@ export default function SignInForm() {
             password,
          });
          
-         console.log("Sign in result:", result);
+         console.log("Sign in result:", JSON.stringify(result, null, 2));
          toast.dismiss(loadingToast);
          
          if (result.error) {
-            console.error("Sign in error:", result.error);
-            toast.error(result.error.message || "Failed to sign in");
+            console.error("Sign in error:", JSON.stringify(result.error, null, 2));
+            const errorMessage = result.error.message || 
+                               (typeof result.error === 'string' ? result.error : null) ||
+                               "Invalid email or password";
+            toast.error(errorMessage);
             setIsLoading(false);
-         } else {
+         } else if (result.data) {
             toast.success("Signed in successfully");
             router.push("/dashboard");
             router.refresh();
+         } else {
+            console.error("Unexpected result format:", result);
+            toast.error("Sign in failed. Please try again.");
+            setIsLoading(false);
          }
       } catch (error) {
          console.error("Sign in exception:", error);
          toast.dismiss(loadingToast);
-         toast.error("An unexpected error occurred");
+         const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred";
+         toast.error(errorMessage);
          setIsLoading(false);
       }
    }
