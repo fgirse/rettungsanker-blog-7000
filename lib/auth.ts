@@ -14,7 +14,7 @@ export const auth = betterAuth({
       enabled: true,
       autoSignIn: false,
       minPasswordLength: 8,
-      passwordValidation: (password: string | any[]) => {
+      passwordValidation: (password: string | string[]) => {
          return password && password.length >= 8;
       }
    },

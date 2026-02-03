@@ -40,19 +40,40 @@ export default function SignInForm() {
       
       try {
          console.log("Attempting to sign in with email:", email);
-         const result = await authClient.signIn.email({
+         type SignInResult = {
+            error?: string | { message?: string };
+            data?: {
+               redirect?: boolean;
+               token?: string;
+               url?: string;
+               user?: {
+                  id: string;
+                  email: string;
+                  name: string;
+                  [key: string]: unknown;
+               };
+            } | null;
+         };
+
+         const rawResult = await authClient.signIn.email({
             email,
             password,
          });
+
+         // Normalize the result so error is never null
+         const result: SignInResult = {
+            error: rawResult.error ?? undefined,
+            data: rawResult.data,
+         };
          
          console.log("Sign in result:", JSON.stringify(result, null, 2));
          toast.dismiss(loadingToast);
          
          if (result.error) {
             console.error("Sign in error:", JSON.stringify(result.error, null, 2));
-            const errorMessage = result.error.message || 
-                               (typeof result.error === 'string' ? result.error : null) ||
-                               "Invalid email or password";
+            const errorMessage = typeof result.error === 'string' 
+                               ? result.error 
+                               : (result.error as { message?: string }).message || "Invalid email or password";
             toast.error(errorMessage);
             setIsLoading(false);
          } else if (result.data) {

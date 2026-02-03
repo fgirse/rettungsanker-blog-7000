@@ -4,7 +4,7 @@
  */
 
 import { PrismaClient } from '@prisma/client';
-import { hash } from 'better-auth/utils/password';
+import { hashPassword } from 'better-auth/crypto';
 
 const prisma = new PrismaClient();
 
@@ -33,7 +33,7 @@ async function fixUserCredential(email: string, password: string) {
 
     // Hash password using Better Auth's method
     console.log('   Hashing password with Better Auth...');
-    const hashedPassword = await hash(password);
+    const hashedPassword = await hashPassword(password);
 
     // Create new credential account
     console.log('   Creating credential account...');
