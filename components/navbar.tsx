@@ -1,7 +1,7 @@
 "use client"
 
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button } from './ui/button'
 import SignOutForm from './sign-out-form'
 import Logo from './logo'
@@ -9,7 +9,8 @@ import { GithubStars } from './github-stars'
 import { useUser } from '@/context/UserContext'
 
 export default function Navbar() {
-   const user = useUser();
+   const { user, isLoading } = useUser();
+
    return (
       <header className="sticky top-0 z-100 flex justify-center py-2">
          <div className="container border rounded-md w-full bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 py-2 px-4">
@@ -18,7 +19,7 @@ export default function Navbar() {
                   <Logo />
                </div>
                <div className='flex items-center gap-2'>
-                  {user ? (
+                  {!isLoading && user ? (
                      <>
 
                         <Link
@@ -32,7 +33,7 @@ export default function Navbar() {
                         </Link>
                         <SignOutForm />
                      </>
-                  ) : (
+                  ) : !isLoading ? (
                      <>
 
                         <Link
@@ -47,7 +48,7 @@ export default function Navbar() {
                            <Link href="/sign-up">Sign up</Link>
                         </Button>
                      </>
-                  )}
+                  ) : null}
                   <GithubStars />
                </div>
             </nav>

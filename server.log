@@ -1,0 +1,81 @@
+$ next dev --turbopack
+   ▲ Next.js 15.2.8 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.1.171:3000
+   - Environments: .env
+
+ ✓ Starting...
+ ⚠ Invalid next.config.ts options detected: 
+ ⚠     Unrecognized key(s) in object: 'turbopack'
+Payload: You can safely ignore the "Invalid next.config" warning above. This only occurs on Next.js 15.2.x or lower. We recommend upgrading to the latest supported Next.js version to resolve this warning.
+Payload: You can safely ignore the "Invalid next.config" warning above. This only occurs on Next.js 15.2.x or lower. We recommend upgrading to the latest supported Next.js version to resolve this warning.
+ ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+ ✓ Compiled in 102ms
+ ✓ Ready in 669ms
+ ⚠ Webpack is configured while Turbopack is not, which may cause problems.
+ ⚠ See instructions if you need to configure Turbopack:
+  https://nextjs.org/docs/app/api-reference/next-config-js/turbo
+
+ ○ Compiling / ...
+ ✓ Compiled / in 2.5s
+ GET / 200 in 3740ms
+ ✓ Compiled /api/github-star in 344ms
+ GET /api/github-star 200 in 802ms
+ ○ Compiling /sign-in ...
+ ✓ Compiled /sign-in in 830ms
+ GET /sign-in 200 in 884ms
+ ○ Compiling /api/auth/[...all] ...
+ ✓ Compiled /api/auth/[...all] in 818ms
+[2m2026-02-03T10:41:50.595Z[0m [31mERROR[0m [1m[Better Auth]:[0m Invalid password
+ POST /api/auth/sign-in/email 401 in 2309ms
+ POST /api/auth/sign-in/email 200 in 1208ms
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 883ms
+ GET /dashboard 200 in 937ms
+ GET /dashboard 200 in 67ms
+ GET /sign-in 200 in 56ms
+ GET /sign-in 200 in 45ms
+ POST /api/auth/sign-in/social 200 in 84ms
+ GET /api/auth/callback/google?state=coyRI22Xa7_NZxk_MfpQcQewOdzKR1l6&code=4%2F0ASc3gC3NOUUw7o6VxSwUs8BwUcnYwG4bqXzrwXE7OvKEfUc4zoWUWRGw2zIXiZ96RyINdw&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=0&prompt=none 302 in 352ms
+ GET /dashboard 307 in 73ms
+ GET /sign-in 200 in 92ms
+ POST /api/auth/sign-in/social 200 in 79ms
+ GET /api/auth/callback/google?state=UEwUCJ1yVpFrCFWWhOSHNaYZ7DJcSf-5&code=4%2F0ASc3gC1gFCT55niFqNT8agRrD5OR04D7VhFwhhOApZreLcLxuCnP5FLNxnDYqpsInocSqg&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=0&prompt=none 302 in 327ms
+ GET /dashboard 307 in 70ms
+ GET /sign-in 200 in 63ms
+ ○ Compiling /admin/[[...segments]] ...
+ ✓ Compiled /admin/[[...segments]] in 3.8s
+ GET /admin 200 in 5195ms
+ ○ Compiling /api/[...slug] ...
+ ✓ Compiled /api/[...slug] in 524ms
+ GET /api/users/me 200 in 1139ms
+ GET /api/payload-preferences/nav 200 in 1114ms
+ GET /admin/dashboard 404 in 117ms
+ GET /api/users/me 200 in 96ms
+ GET /api/payload-preferences/nav 200 in 96ms
+ GET /api/users/me 200 in 51ms
+ GET /admin 200 in 101ms
+ GET /dashboard 307 in 89ms
+ GET /sign-in 200 in 92ms
+ ✓ Compiled /_not-found/page in 257ms
+ GET /apple-touch-icon.png 404 in 283ms
+ POST /api/auth/sign-in/social 200 in 94ms
+ GET /api/auth/callback/google?state=mxVbqcT9ADZSGIpm9ici_PJESKPPAbVE&code=4%2F0ASc3gC00jD4OSvC7GE-UMpegvl3dHL1IjhCEztGNG_1CX0fThSce-jXbMx0PQhiRkpHd3g&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=none 302 in 343ms
+ GET /dashboard 307 in 70ms
+ GET /sign-in 200 in 65ms
+ GET /apple-touch-icon.png 404 in 43ms
+ GET /dashboard 307 in 87ms
+ GET /sign-in 200 in 64ms
+ GET /apple-touch-icon.png 404 in 36ms
+ POST /api/auth/sign-in/email 200 in 1235ms
+ GET /dashboard 200 in 47ms
+ GET /dashboard 200 in 62ms
+ GET /sign-in 200 in 53ms
+ GET /sign-in 200 in 135ms
+ GET /apple-touch-icon.png 404 in 30ms
+ GET /dashboard 307 in 86ms
+ GET /sign-in 200 in 71ms
+ GET /apple-touch-icon.png 404 in 31ms
+ ✓ Compiled in 266ms
+ GET /sign-in 200 in 46ms
+ GET /apple-touch-icon.png 404 in 33ms

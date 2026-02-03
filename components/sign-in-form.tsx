@@ -39,14 +39,17 @@ export default function SignInForm() {
       const loadingToast = toast.loading("Signing in...");
       
       try {
+         console.log("Attempting to sign in with email:", email);
          const result = await authClient.signIn.email({
             email,
             password,
          });
          
+         console.log("Sign in result:", result);
          toast.dismiss(loadingToast);
          
          if (result.error) {
+            console.error("Sign in error:", result.error);
             toast.error(result.error.message || "Failed to sign in");
             setIsLoading(false);
          } else {
@@ -55,6 +58,7 @@ export default function SignInForm() {
             router.refresh();
          }
       } catch (error) {
+         console.error("Sign in exception:", error);
          toast.dismiss(loadingToast);
          toast.error("An unexpected error occurred");
          setIsLoading(false);
