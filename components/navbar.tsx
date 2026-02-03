@@ -1,7 +1,7 @@
 "use client"
 
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+
 import { Button } from './ui/button'
 import SignOutForm from './sign-out-form'
 import Logo from './logo'
