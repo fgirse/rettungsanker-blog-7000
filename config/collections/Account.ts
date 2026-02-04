@@ -15,8 +15,10 @@ export const Accounts: CollectionConfig = {
       },
       {
         name: 'userId',
-        type: 'text',
+        type: 'relationship',
+        relationTo: 'users',
         required: true,
+        hasMany: false,
       },
       {
         name: 'accessToken',

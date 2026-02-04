@@ -16,11 +16,26 @@ async function seed() {
     })
 
     if (existingUsers.docs.length > 0) {
-      console.log('✅ Admin user already exists')
+      const existing = existingUsers.docs[0]
+      await payload.update({
+        collection: 'users',
+        id: existing.id,
+        data: {
+          name: existing.name || 'Admin User',
+          role: existing.role?.length ? existing.role : ['admin'],
+          emailVerified: true,
+          password: 'admin123',
+        },
+        overrideAccess: true,
+      })
+
+      console.log('✅ Admin user password updated')
+      console.log('Email: admin@example.com')
+      console.log('Password: admin123')
       return
     }
 
-    // Create admin user - Note: password needs to be set via auth API
+    // Create admin user with password
     const user = await payload.create({
       collection: 'users',
       data: {
@@ -28,7 +43,9 @@ async function seed() {
         name: 'Admin User',
         role: ['admin'],
         emailVerified: true,
-      }
+        password: 'admin123',
+      },
+      overrideAccess: true,
     })
 
     console.log('✅ Admin user created successfully!')

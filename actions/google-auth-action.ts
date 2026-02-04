@@ -10,7 +10,7 @@ export const signInWithGoogle = async () => {
       
       const result = await authClient.signIn.social({
          provider: "google",
-         callbackURL: "/dashboard"
+         callbackURL: "/"
       });
       
       console.log("Google sign-in result:", result);

@@ -7,9 +7,11 @@ import SignOutForm from './sign-out-form'
 import Logo from './logo'
 import { GithubStars } from './github-stars'
 import { useUser } from '@/context/UserContext'
+import { useRouter } from "next/navigation"
 
 export default function Navbar() {
    const { user, isLoading } = useUser();
+   const router = useRouter();
 
    return (
       <header className="sticky top-0 z-100 flex justify-center py-2">
@@ -21,7 +23,15 @@ export default function Navbar() {
                <div className='flex items-center gap-2'>
                   {!isLoading && user ? (
                      <>
-
+                        {user.role === 'admin' && (
+                           <Button
+                              variant="outline"
+                              onClick={() => router.push("/admin")}
+                              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                           >
+                              Admin Panel
+                           </Button>
+                        )}
                         <Link
                            href="/dashboard"
                            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"

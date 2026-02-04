@@ -9,6 +9,7 @@
     "lint": "next lint",
     "postinstall": "prisma generate",
     "seed:admin": "node --env-file=.env --import=tsx scripts/seed-admin",
+    "seed:rettungsanker": "node --env-file=.env --import=tsx scripts/seed-rettungsanker",
     "email:dev": "email dev"
   },
   "dependencies": {

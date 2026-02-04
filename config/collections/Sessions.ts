@@ -28,8 +28,10 @@ export const Sessions: CollectionConfig = {
     },
     {
       name: 'userId',
-      type: 'text',
+      type: 'relationship',
+      relationTo: 'users',
       required: true,
+      hasMany: false,
     },
   ],
 }
