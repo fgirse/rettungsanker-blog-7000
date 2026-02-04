@@ -1,8 +1,10 @@
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { UserProvider } from "@/context/UserContext";
+import { getPayload } from "payload";
+import config from "@payload-config";
 //import { StarsBackground } from "@/components/animate-ui/backgrounds/stars";
 
 export default async function HomeLayout({
@@ -10,10 +12,38 @@ export default async function HomeLayout({
 }: Readonly<{
    children: React.ReactNode;
 }>) {
+   const cookieHeader = (await cookies())
+      .getAll()
+      .map((cookie) => `${cookie.name}=${cookie.value}`)
+      .join("; ")
+
+   const headerEntries = Object.fromEntries(await headers())
    const session = await auth.api.getSession({
-      headers: await headers()
-   });
-   const user = session?.user ?? null;
+      headers: new Headers({
+         ...headerEntries,
+         cookie: cookieHeader,
+      }),
+   })
+
+   let user = session?.user ?? null;
+
+   if (session?.user?.email) {
+      const payload = await getPayload({ config });
+      const { docs } = await payload.find({
+         collection: "users",
+         where: {
+            email: {
+               equals: session.user.email,
+            },
+         },
+         limit: 1,
+         overrideAccess: true,
+      });
+
+      if (docs[0]) {
+         user = docs[0] as typeof user;
+      }
+   }
    return (
       <UserProvider user={user}>
          <div className="relative">
