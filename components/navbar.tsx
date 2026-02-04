@@ -21,7 +21,20 @@ export default function Navbar() {
                <div className='flex items-center gap-2'>
                   {!isLoading && user ? (
                      <>
-
+                        {user.role === 'admin' ? (
+                           <Link
+                              href="/admin"
+                              className="text-sm font-medium"
+                           >
+                              <Button className="bg-slate-500 text-white hover:bg-slate-600">
+                                 Admin
+                              </Button>
+                           </Link>
+                        ) : (
+                           <span className="text-sm text-destructive">
+                              User is not admin
+                           </span>
+                        )}
                         <Link
                            href="/dashboard"
                            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
