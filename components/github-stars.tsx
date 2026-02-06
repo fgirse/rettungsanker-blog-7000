@@ -9,8 +9,17 @@ export function GithubStars() {
    const fetchStars = async () => {
       try {
          const res = await fetch("/api/github-star");
+         const contentType = res.headers.get("content-type") || "";
+         if (!res.ok || !contentType.includes("application/json")) {
+            console.error("Unexpected response for /api/github-star", {
+               status: res.status,
+               contentType,
+            });
+            setStars(0);
+            return;
+         }
          const data = await res.json();
-         setStars(data.stars);
+         setStars(data.stars ?? 0);
       } catch (err) {
          console.error("Failed to fetch stars:", err);
          setStars(0);

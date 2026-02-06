@@ -1,4 +1,6 @@
 import type { CollectionConfig } from 'payload'
+import { hashPassword } from 'better-auth/crypto'
+import prisma from '@/lib/prisma'
 
 import { authenticated } from '../../access/authenticated'
 
@@ -18,6 +20,63 @@ export const Users: CollectionConfig = {
     defaultColumns: ['name', 'email', 'role'],
     useAsTitle: 'name',
   },
+  hooks: {
+    beforeChange: [
+      ({ req, data }) => {
+        if (data?.password) {
+          req.context = {
+            ...req.context,
+            newUserPassword: data.password,
+          }
+        }
+        return data
+      },
+    ],
+    afterChange: [
+      async ({ doc, operation, req }) => {
+        if (operation !== 'create') return
+
+        const password = req.context?.newUserPassword as string | undefined
+        if (!password) return
+
+        const existingAccount = await prisma.account.findFirst({
+          where: {
+            userId: doc.id,
+            providerId: 'credential',
+          },
+        })
+
+        if (existingAccount) return
+
+        const userByEmail = await prisma.user.findUnique({
+          where: { email: doc.email },
+        })
+
+        if (!userByEmail) {
+          await prisma.user.create({
+            data: {
+              id: doc.id,
+              email: doc.email,
+              name: doc.name || undefined,
+              emailVerified: !!doc.emailVerified,
+              image: doc.image || undefined,
+            },
+          })
+        }
+
+        const hashedPassword = await hashPassword(password)
+
+        await prisma.account.create({
+          data: {
+            accountId: doc.id,
+            providerId: 'credential',
+            userId: doc.id,
+            password: hashedPassword,
+          },
+        })
+      },
+    ],
+  },
   
   fields: [
     {
@@ -34,6 +93,14 @@ export const Users: CollectionConfig = {
       defaultValue: 'user',
       required: true,
       hasMany: false,
+    },
+    {
+      name: 'isAdmin',
+      type: 'checkbox',
+      defaultValue: false,
+      admin: {
+        position: 'sidebar',
+      },
     },
     {
       name: 'emailVerified',

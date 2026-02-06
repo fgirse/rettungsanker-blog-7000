@@ -41,7 +41,12 @@ export default async function HomeLayout({
       });
 
       if (docs[0]) {
-         user = docs[0] as typeof user;
+         user = {
+            ...session.user,
+            ...docs[0],
+            createdAt: new Date(docs[0].createdAt),
+            updatedAt: new Date(docs[0].updatedAt),
+         };
       }
    }
    return (

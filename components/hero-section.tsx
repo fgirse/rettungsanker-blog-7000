@@ -52,7 +52,7 @@ export default async function HeroSection() {
             {/* Product of the Month Section */}
             {productOfTheMonth?.isActive && productImage && (
                <FadeInView delay={0.8} className="absolute top-[50vh]  lg:top-24 lg:left-12 -rotate-12 max-w-2xl lg:mt-12 lg:w-full lg:max-w-4xl">
-                  <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-lime-300/10 to-lime-500/70 lg:from-lime-300 lg:to-lime-500/70 lg:bg-gradient-to-b backdrop-blur-sm border border-amber-500/20 p-8 shadow-2xl">
+                  <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-lime-300/10 to-lime-500/70 lg:from-lime-300 lg:to-lime-500/70 lg:bg-linear-to-b backdrop-blur-sm border border-amber-500/20 p-8 shadow-2xl">
                      <div className="grid md:grid-cols-2 gap-8 items-center">
                         {/* Image Section */}
                         <div className="relative  h-80 md:h-80 rounded-xl overflow-hidden group">

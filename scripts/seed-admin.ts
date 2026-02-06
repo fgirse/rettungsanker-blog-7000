@@ -1,5 +1,7 @@
 import { getPayload } from 'payload'
 import config from '@payload-config'
+import { hashPassword } from 'better-auth/crypto'
+import prisma from '@/lib/prisma'
 
 async function seed() {
   const payload = await getPayload({ config })
@@ -24,14 +26,13 @@ async function seed() {
           name: existing.name || 'Admin User',
           role: existing.role?.length ? existing.role : ['admin'],
           emailVerified: true,
-          password: 'admin123',
         },
         overrideAccess: true,
       })
 
-      console.log('✅ Admin user password updated')
+      console.log('✅ Admin user updated')
       console.log('Email: admin@example.com')
-      console.log('Password: admin123')
+      console.log('⚠️  Password was not changed - use reset-user-password.ts to update it')
       return
     }
 
@@ -43,9 +44,20 @@ async function seed() {
         name: 'Admin User',
         role: ['admin'],
         emailVerified: true,
-        password: 'admin123',
       },
       overrideAccess: true,
+    })
+
+    // Create the credential account in Prisma
+    const hashedPassword = await hashPassword('admin123')
+    
+    await prisma.account.create({
+      data: {
+        accountId: user.id,
+        providerId: 'credential',
+        userId: user.id,
+        password: hashedPassword,
+      },
     })
 
     console.log('✅ Admin user created successfully!')

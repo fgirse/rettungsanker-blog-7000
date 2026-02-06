@@ -1,5 +1,7 @@
 import { getPayload } from 'payload'
 import config from '@payload-config'
+import { hashPassword } from 'better-auth/crypto'
+import prisma from '@/lib/prisma'
 
 async function setAdminPassword() {
   const payload = await getPayload({ config })
@@ -25,15 +27,41 @@ async function setAdminPassword() {
 
     const user = existingUsers.docs[0]
 
+    // Update emailVerified in Payload
     await payload.update({
       collection: 'users',
       id: user.id,
       data: {
-        password,
         emailVerified: true,
       },
       overrideAccess: true,
     })
+
+    // Update password in Prisma account
+    const hashedPassword = await hashPassword(password)
+    
+    const existingAccount = await prisma.account.findFirst({
+      where: {
+        userId: user.id,
+        providerId: 'credential',
+      },
+    })
+
+    if (existingAccount) {
+      await prisma.account.update({
+        where: { id: existingAccount.id },
+        data: { password: hashedPassword },
+      })
+    } else {
+      await prisma.account.create({
+        data: {
+          accountId: user.id,
+          providerId: 'credential',
+          userId: user.id,
+          password: hashedPassword,
+        },
+      })
+    }
 
     console.log('✅ Password updated')
     console.log('Email:', email)

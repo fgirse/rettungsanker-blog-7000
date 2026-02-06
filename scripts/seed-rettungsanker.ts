@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { getPayload } from "payload";
+import { getPayload, type CollectionSlug } from "payload";
 import config from "@payload-config";
 
 const mimeByExt: Record<string, string> = {
@@ -19,14 +19,14 @@ function richTextFromText(text: string) {
         {
           type: "paragraph",
           children: [{ type: "text", text, version: 1 }],
-          direction: "ltr",
-          format: "",
+          direction: "ltr" as const,
+          format: "" as const,
           indent: 0,
           version: 1,
         },
       ],
-      direction: "ltr",
-      format: "",
+      direction: "ltr" as const,
+      format: "" as const,
       indent: 0,
       version: 1,
     },
@@ -65,7 +65,7 @@ async function upsertAbout(payload: ReturnType<typeof getPayload> extends Promis
 
 async function upsertBentoGrid(payload: ReturnType<typeof getPayload> extends Promise<infer T> ? T : never) {
   const existing = await payload.find({
-    collection: "bentogrid",
+    collection: "bentogrid" as CollectionSlug,
     limit: 1,
   });
 
@@ -102,17 +102,17 @@ async function upsertBentoGrid(payload: ReturnType<typeof getPayload> extends Pr
 
   if (existing.docs.length > 0) {
     await payload.update({
-      collection: "bentogrid",
+      collection: "bentogrid" as CollectionSlug,
       id: existing.docs[0].id,
-      data,
+      data: data as any,
       overrideAccess: true,
     });
     return;
   }
 
   await payload.create({
-    collection: "bentogrid",
-    data,
+    collection: "bentogrid" as CollectionSlug,
+    data: data as any,
     overrideAccess: true,
   });
 }
@@ -192,7 +192,7 @@ async function ensureMedia(payload: ReturnType<typeof getPayload> extends Promis
 
 async function upsertGlobals(payload: ReturnType<typeof getPayload> extends Promise<infer T> ? T : never, mediaId: string) {
   await payload.updateGlobal({
-    slug: "generalSettings",
+    slug: "generalSettings" as any,
     data: {
       title: "Rettungsanker Freiburg",
       tagline: "Die Kiezkneipe in Freiburg",
@@ -204,7 +204,7 @@ async function upsertGlobals(payload: ReturnType<typeof getPayload> extends Prom
   });
 
   await payload.updateGlobal({
-    slug: "navigation",
+    slug: "navigation" as any,
     data: {
       menus: [
         {
@@ -225,7 +225,7 @@ async function upsertGlobals(payload: ReturnType<typeof getPayload> extends Prom
   });
 
   await payload.updateGlobal({
-    slug: "productOfTheMonth",
+    slug: "productOfTheMonth" as any,
     data: {
       isActive: true,
       title: "Flensburger Dunkel",
@@ -234,7 +234,7 @@ async function upsertGlobals(payload: ReturnType<typeof getPayload> extends Prom
       image: mediaId,
       price: "€4,50",
       badge: "NEU",
-    },
+    } as any,
     context: {
       disableRevalidate: true,
     },
